@@ -8,14 +8,20 @@ class Particle {
   int alpha;  //透明度
   Particle(float speed, int i) { //各変数の初期化
     pos = new PVector(width/2+random(-5, 5), height+speed);
-    vel = new PVector(random(-4, 4),random(speed,speed+10));
+    vel = new PVector(random(-4, 4), random(speed, speed+5));
     acc = new PVector(0, 0.2);
     r = random(5, 25);
-    //リストの番号が偶数か奇数かで、色を変更
-    if ( i % 2 == 0) {
-      c  = color(100, 100, 255);
-    } else {
-      c = color(100, 255, 255);
+    //リストの番号で、色を変更
+    switch(i%3) {
+    case 0:
+      c  = color(#4C6FFF);
+      break;
+    case 1:
+      c = color(#84B8FB);
+      break;
+    case 2:
+      c = color(#97DFE4);
+      break;
     }
     alpha = 300;
   }
@@ -28,7 +34,7 @@ class Particle {
 
   void dhisplay() {
     noStroke();
-    fill(c,alpha);
+    fill(c, alpha);
     ellipse(pos.x, pos.y, r, r);
   }
 }

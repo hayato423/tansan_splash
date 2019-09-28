@@ -25,7 +25,7 @@ void draw() {
     for (int i = 0; i < particle_num; i++) {
       particles.add(new Particle(speed, i));  //粒子を生成
     }
-    count_num -= 1;
+    count_num -= 2;
   }
   for (int i = 0; i < particles.size(); i++) {
     particles.get(i).update();  //粒子の位置を更新
