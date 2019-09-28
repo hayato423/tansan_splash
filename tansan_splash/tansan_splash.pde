@@ -1,7 +1,5 @@
 import processing.serial.*;
-import processing.sound.*;
 
-SoundFile soundfile;
 Serial serial;
 int count = 0;  //振った回数
 int count_num = 0;
@@ -15,18 +13,15 @@ void setup() {
   serial = new Serial(this, "COM7", 9600);
   serial.clear();
   serial.bufferUntil(10);
-  soundfile = new SoundFile(this, "tansan_001.wav");
+  serial.write("#");
 }
 
 void draw() {
   fade(true);  //残像をつけるかどうか
   fill(#FFFFFF);
   textSize(20);
-  text(count, 50, 50);
+  text(count,50,50);
   if (count_num > 0) {
-    if (!soundfile.isPlaying()) {
-      soundfile.play();
-    }
     for (int i = 0; i < particle_num; i++) {
       particles.add(new Particle(speed, i));  //粒子を生成
     }
@@ -37,10 +32,6 @@ void draw() {
     particles.get(i).dhisplay();//粒子を描画
     if (particles.get(i).pos.y > height) {
       particles.remove(i);
-      if(i == particles.size()-1){
-        soundfile.stop();
-        soundfile.jump(0);
-      }
     }
   }
 }
