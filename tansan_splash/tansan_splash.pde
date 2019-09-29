@@ -5,8 +5,8 @@ SoundFile soundfile;
 Serial serial;
 int count = 0;  //振った回数
 int count_num = 0;
-int particle_num = 10;   //粒子の個数
-float speed = 0;
+int particle_num = 5;   //粒子の個数
+float speed = 0;        //噴射するスピード
 ArrayList<Particle> particles = new ArrayList<Particle>(); //粒子のリストを生成
 void setup() {
   //size(800, 800);
@@ -30,7 +30,7 @@ void draw() {
     for (int i = 0; i < particle_num; i++) {
       particles.add(new Particle(speed, i));  //粒子を生成
     }
-    count_num -= 2;
+    count_num -= 1;
   }
   for (int i = 0; i < particles.size(); i++) {
     particles.get(i).update();  //粒子の位置を更新
@@ -52,7 +52,7 @@ void serialEvent(Serial serial) {
   data = trim(data);
   count = int(data);
   count_num = count;
-  speed  = constrain(count, 0, 30) * (-0.8);
+  speed  = constrain(count, 0, 24) * (-1);
   println(count);
 }
 

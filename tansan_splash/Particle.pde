@@ -7,7 +7,7 @@ class Particle {
   color c;    //粒子の色
   int alpha;  //透明度
   Particle(float speed, int i) { //各変数の初期化
-    pos = new PVector(width/2+random(-5, 5), height+speed);
+    pos = new PVector(width/2+random(-25, 25), height+speed);
     vel = new PVector(random(-4, 4), random(speed, speed+5));
     acc = new PVector(0, 0.2);
     r = random(5, 25);
